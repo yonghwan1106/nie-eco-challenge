@@ -1,0 +1,44 @@
+[
+  {
+    "mission_id": "m001",
+    "title": "이번 주 가시박 찾기",
+    "description": "가을철 급속히 번지는 가시박을 찾아 신고해주세요!",
+    "mission_type": "species_specific",
+    "target_species_id": "sp001",
+    "reward_points": 100,
+    "progress_goal": 5,
+    "current_progress": 0,
+    "start_date": "2025-11-11",
+    "end_date": "2025-11-17",
+    "status": "active",
+    "difficulty": "easy"
+  },
+  {
+    "mission_id": "m002",
+    "title": "하천 지킴이 챌린지",
+    "description": "하천에 서식하는 생태교란종(뉴트리아, 블루길, 황소개구리)을 찾아주세요!",
+    "mission_type": "category_specific",
+    "target_species_id": ["sp002", "sp004", "sp005"],
+    "reward_points": 200,
+    "progress_goal": 3,
+    "current_progress": 0,
+    "start_date": "2025-11-10",
+    "end_date": "2025-11-30",
+    "status": "active",
+    "difficulty": "medium"
+  },
+  {
+    "mission_id": "m003",
+    "title": "에코 콜렉터",
+    "description": "5종류 이상의 서로 다른 생태교란종을 수집하세요!",
+    "mission_type": "collection",
+    "target_species_id": null,
+    "reward_points": 300,
+    "progress_goal": 5,
+    "current_progress": 0,
+    "start_date": "2025-11-01",
+    "end_date": "2025-11-30",
+    "status": "active",
+    "difficulty": "hard"
+  }
+]

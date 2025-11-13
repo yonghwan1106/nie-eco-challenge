@@ -1,0 +1,82 @@
+[
+  {
+    "report_id": "rp001",
+    "user_id": "user001",
+    "species_id": "sp001",
+    "ai_suggested_species": "sp001",
+    "ai_confidence": 0.95,
+    "location": {
+      "lat": 36.5040,
+      "lng": 127.2621,
+      "address": "충청남도 서천군 마서면 금강로 1210"
+    },
+    "image_url": "/uploads/rp001.jpg",
+    "description": "국립생태원 인근 산책로에서 발견했습니다.",
+    "status": "confirmed",
+    "confirmed_species_id": "sp001",
+    "admin_comment": "정확한 식별입니다. 감사합니다.",
+    "points_awarded": 50,
+    "created_at": "2025-11-10T14:30:00Z",
+    "reviewed_at": "2025-11-10T16:45:00Z"
+  },
+  {
+    "report_id": "rp002",
+    "user_id": "user002",
+    "species_id": "sp002",
+    "ai_suggested_species": "sp002",
+    "ai_confidence": 0.88,
+    "location": {
+      "lat": 36.5100,
+      "lng": 127.2700,
+      "address": "충청남도 서천군 금강 하천변"
+    },
+    "image_url": "/uploads/rp002.jpg",
+    "description": "금강 하천변에서 목격했습니다.",
+    "status": "confirmed",
+    "confirmed_species_id": "sp002",
+    "admin_comment": "뉴트리아가 맞습니다. 해당 지역 모니터링이 필요합니다.",
+    "points_awarded": 100,
+    "created_at": "2025-11-11T09:15:00Z",
+    "reviewed_at": "2025-11-11T11:20:00Z"
+  },
+  {
+    "report_id": "rp003",
+    "user_id": "user003",
+    "species_id": "sp003",
+    "ai_suggested_species": "sp003",
+    "ai_confidence": 0.72,
+    "location": {
+      "lat": 36.5200,
+      "lng": 127.2500,
+      "address": "충청남도 서천군 마서면 도로변"
+    },
+    "image_url": "/uploads/rp003.jpg",
+    "description": "도로변 공터에서 발견했습니다.",
+    "status": "pending_review",
+    "confirmed_species_id": null,
+    "admin_comment": null,
+    "points_awarded": 0,
+    "created_at": "2025-11-12T13:45:00Z",
+    "reviewed_at": null
+  },
+  {
+    "report_id": "rp004",
+    "user_id": "user001",
+    "species_id": "sp004",
+    "ai_suggested_species": "sp004",
+    "ai_confidence": 0.91,
+    "location": {
+      "lat": 36.4950,
+      "lng": 127.2580,
+      "address": "충청남도 서천군 금강 지류"
+    },
+    "image_url": "/uploads/rp004.jpg",
+    "description": "금강 지류에서 낚시 중 발견했습니다.",
+    "status": "confirmed",
+    "confirmed_species_id": "sp004",
+    "admin_comment": "블루길 확인. 우수한 사진입니다.",
+    "points_awarded": 50,
+    "created_at": "2025-11-12T16:20:00Z",
+    "reviewed_at": "2025-11-13T09:10:00Z"
+  }
+]

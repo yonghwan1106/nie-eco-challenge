@@ -1,0 +1,41 @@
+[
+  {
+    "user_id": "user001",
+    "nickname": "생태지킴이",
+    "email": "eco@example.com",
+    "join_date": "2025-01-15",
+    "total_points": 1250,
+    "rank": 1,
+    "reports_count": 25,
+    "confirmed_count": 22,
+    "collected_species": ["sp001", "sp002", "sp003", "sp004"],
+    "profile_image": "/images/avatars/default.png",
+    "badges": ["first_report", "species_hunter", "top_contributor"]
+  },
+  {
+    "user_id": "user002",
+    "nickname": "자연탐험가",
+    "email": "nature@example.com",
+    "join_date": "2025-02-01",
+    "total_points": 890,
+    "rank": 2,
+    "reports_count": 18,
+    "confirmed_count": 16,
+    "collected_species": ["sp001", "sp003", "sp005"],
+    "profile_image": "/images/avatars/default.png",
+    "badges": ["first_report", "weekend_warrior"]
+  },
+  {
+    "user_id": "user003",
+    "nickname": "에코히어로",
+    "email": "hero@example.com",
+    "join_date": "2025-03-10",
+    "total_points": 650,
+    "rank": 3,
+    "reports_count": 13,
+    "confirmed_count": 12,
+    "collected_species": ["sp002", "sp004"],
+    "profile_image": "/images/avatars/default.png",
+    "badges": ["first_report"]
+  }
+]

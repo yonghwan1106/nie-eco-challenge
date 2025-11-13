@@ -1,0 +1,57 @@
+[
+  {
+    "id": "sp001",
+    "name_ko": "가시박",
+    "name_en": "Burcucumber",
+    "scientific_name": "Sicyos angulatus",
+    "category": "식물",
+    "description": "북미 원산의 덩굴성 한해살이풀로, 다른 식물을 덮어 햇빛을 차단하여 고사시킵니다.",
+    "origin": "북아메리카",
+    "threat_level": "high",
+    "image_url": "/images/species/gasibak.jpg"
+  },
+  {
+    "id": "sp002",
+    "name_ko": "뉴트리아",
+    "name_en": "Nutria",
+    "scientific_name": "Myocastor coypus",
+    "category": "동물",
+    "description": "남미 원산의 대형 설치류로, 하천 제방을 훼손하고 수생식물을 대량 섭식합니다.",
+    "origin": "남아메리카",
+    "threat_level": "high",
+    "image_url": "/images/species/nutria.jpg"
+  },
+  {
+    "id": "sp003",
+    "name_ko": "돼지풀",
+    "name_en": "Ragweed",
+    "scientific_name": "Ambrosia artemisiifolia",
+    "category": "식물",
+    "description": "북미 원산의 한해살이풀로, 꽃가루 알레르기를 유발하며 농작물 생육을 방해합니다.",
+    "origin": "북아메리카",
+    "threat_level": "medium",
+    "image_url": "/images/species/ragweed.jpg"
+  },
+  {
+    "id": "sp004",
+    "name_ko": "블루길",
+    "name_en": "Bluegill",
+    "scientific_name": "Lepomis macrochirus",
+    "category": "동물",
+    "description": "북미 원산의 민물고기로, 토종 어류의 알과 치어를 포식하여 생태계를 교란합니다.",
+    "origin": "북아메리카",
+    "threat_level": "high",
+    "image_url": "/images/species/bluegill.jpg"
+  },
+  {
+    "id": "sp005",
+    "name_ko": "황소개구리",
+    "name_en": "American Bullfrog",
+    "scientific_name": "Lithobates catesbeianus",
+    "category": "동물",
+    "description": "북미 원산의 대형 개구리로, 토종 양서류와 곤충을 대량 포식합니다.",
+    "origin": "북아메리카",
+    "threat_level": "high",
+    "image_url": "/images/species/bullfrog.jpg"
+  }
+]
