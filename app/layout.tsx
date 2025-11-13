@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { MobileNav } from "@/components/layout/mobile-nav";
@@ -26,12 +27,12 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
         />
-        <script
-          type="text/javascript"
-          src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_KEY_ID}`}
-        />
       </head>
       <body className={`${geistMono.variable} antialiased`}>
+        <Script
+          src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_KEY_ID}`}
+          strategy="beforeInteractive"
+        />
         <Header />
         <main className="min-h-screen pb-20 bg-gradient-to-b from-white to-emerald-50/30">
           <div className="max-w-lg mx-auto">
