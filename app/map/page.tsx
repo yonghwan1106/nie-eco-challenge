@@ -182,7 +182,7 @@ export default function MapPage() {
         onReady={() => setIsMapLoaded(true)}
         strategy="afterInteractive"
       />
-      <div className="min-h-screen pb-24">
+      <div className="min-h-screen pb-24 relative z-0">
         {/* Header */}
         <div className="bg-white border-b sticky top-16 z-30">
         <div className="flex items-center justify-between px-4 py-4 max-w-lg mx-auto">
@@ -305,9 +305,9 @@ export default function MapPage() {
 
       <div className="max-w-lg mx-auto">
         {/* Map Container */}
-        <div className="relative h-[60vh] overflow-hidden">
+        <div className="relative h-[60vh] overflow-hidden z-0">
           {/* Naver Map */}
-          <div ref={mapRef} className="w-full h-full" />
+          <div ref={mapRef} className="w-full h-full z-0" />
 
           {/* Legend */}
           <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg">
