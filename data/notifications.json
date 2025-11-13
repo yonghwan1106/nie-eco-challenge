@@ -1,0 +1,47 @@
+[
+  {
+    "id": "n001",
+    "type": "report_approved",
+    "title": "신고가 승인되었습니다",
+    "message": "가시박 신고가 승인되어 100 포인트를 획득하셨습니다!",
+    "timestamp": "2024-11-13T09:30:00Z",
+    "read": false,
+    "related_id": "r001"
+  },
+  {
+    "id": "n002",
+    "type": "mission_completed",
+    "title": "미션 완료!",
+    "message": "'이번 주 가시박 찾기' 미션을 완료하여 100 포인트를 획득하셨습니다!",
+    "timestamp": "2024-11-13T09:31:00Z",
+    "read": false,
+    "related_id": "m001"
+  },
+  {
+    "id": "n003",
+    "type": "badge_earned",
+    "title": "새 배지 획득!",
+    "message": "'시민 과학자' 배지를 획득하셨습니다. 축하합니다!",
+    "timestamp": "2024-11-12T14:20:00Z",
+    "read": false,
+    "related_id": "badge_001"
+  },
+  {
+    "id": "n004",
+    "type": "report_rejected",
+    "title": "신고가 반려되었습니다",
+    "message": "뉴트리아 신고가 검토 후 반려되었습니다. 자세한 내용을 확인해주세요.",
+    "timestamp": "2024-11-11T16:45:00Z",
+    "read": true,
+    "related_id": "r004"
+  },
+  {
+    "id": "n005",
+    "type": "new_mission",
+    "title": "새 미션이 추가되었습니다",
+    "message": "'하천 지킴이 챌린지' 미션에 도전해보세요!",
+    "timestamp": "2024-11-10T10:00:00Z",
+    "read": true,
+    "related_id": "m002"
+  }
+]
