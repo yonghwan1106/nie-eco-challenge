@@ -1,16 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowLeft, MapPin, Filter, X } from "lucide-react";
 import Link from "next/link";
 import reportsData from "@/data/reports.json";
 import speciesData from "@/data/species.json";
 import usersData from "@/data/users.json";
 
+// Naver Maps 타입 선언
+declare global {
+  interface Window {
+    naver: any;
+  }
+}
+
 type CategoryFilter = "all" | "식물" | "동물" | "어류";
 type StatusFilter = "all" | "pending" | "confirmed" | "rejected";
 
 export default function MapPage() {
+  const mapRef = useRef<HTMLDivElement>(null);
+  const [map, setMap] = useState<any>(null);
+  const [markers, setMarkers] = useState<any[]>([]);
   const [selectedReport, setSelectedReport] = useState<string | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
@@ -63,6 +73,105 @@ export default function MapPage() {
     동물: "🐾",
     어류: "🐟",
   };
+
+  // 상태별 실제 색상 (마커용)
+  const markerColors = {
+    pending: "#f59e0b",
+    confirmed: "#10b981",
+    rejected: "#ef4444",
+  };
+
+  // 지도 초기화
+  useEffect(() => {
+    if (!mapRef.current || !window.naver) return;
+
+    const mapOptions = {
+      center: new window.naver.maps.LatLng(36.5040, 127.2621),
+      zoom: 12,
+      zoomControl: true,
+      zoomControlOptions: {
+        position: window.naver.maps.Position.TOP_RIGHT,
+      },
+    };
+
+    const newMap = new window.naver.maps.Map(mapRef.current, mapOptions);
+    setMap(newMap);
+  }, []);
+
+  // 마커 업데이트
+  useEffect(() => {
+    if (!map) return;
+
+    // 기존 마커 제거
+    markers.forEach((marker) => marker.setMap(null));
+
+    // 새로운 마커 생성
+    const newMarkers = filteredReports.map((report) => {
+      const species = speciesData.find((s) => s.id === report.species_id);
+      const position = new window.naver.maps.LatLng(
+        report.location.lat,
+        report.location.lng
+      );
+
+      // 커스텀 마커 HTML
+      const markerContent = `
+        <div style="position: relative; cursor: pointer;">
+          <div style="
+            width: 40px;
+            height: 40px;
+            background-color: ${markerColors[report.status as keyof typeof markerColors]};
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 4px solid white;
+            font-size: 20px;
+          ">
+            ${categoryEmoji[species?.category as keyof typeof categoryEmoji] || "📍"}
+          </div>
+          <div style="
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 12px solid ${markerColors[report.status as keyof typeof markerColors]};
+            margin: 0 auto;
+          "></div>
+        </div>
+      `;
+
+      const marker = new window.naver.maps.Marker({
+        position,
+        map,
+        icon: {
+          content: markerContent,
+          anchor: new window.naver.maps.Point(20, 52),
+        },
+      });
+
+      // 마커 클릭 이벤트
+      window.naver.maps.Event.addListener(marker, "click", () => {
+        setSelectedReport(report.report_id);
+        map.panTo(position);
+      });
+
+      return marker;
+    });
+
+    setMarkers(newMarkers);
+
+    // 모든 마커가 보이도록 지도 범위 조정
+    if (newMarkers.length > 0) {
+      const bounds = new window.naver.maps.LatLngBounds();
+      filteredReports.forEach((report) => {
+        bounds.extend(
+          new window.naver.maps.LatLng(report.location.lat, report.location.lng)
+        );
+      });
+      map.fitBounds(bounds);
+    }
+  }, [map, filteredReports]);
 
   return (
     <div className="min-h-screen pb-24">
@@ -188,55 +297,9 @@ export default function MapPage() {
 
       <div className="max-w-lg mx-auto">
         {/* Map Container */}
-        <div className="relative h-[60vh] bg-gradient-to-br from-emerald-50 to-blue-50 overflow-hidden">
-          {/* Mock Map Background */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-emerald-200 rounded-full blur-3xl" />
-            <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-blue-200 rounded-full blur-3xl" />
-          </div>
-
-          {/* Map Markers */}
-          <div className="relative w-full h-full">
-            {filteredReports.map((report, index) => {
-              const species = speciesData.find(
-                (s) => s.id === report.species_id
-              );
-              // 마커 위치를 시뮬레이션 (화면에 분산)
-              const positions = [
-                { top: "20%", left: "30%" },
-                { top: "40%", left: "60%" },
-                { top: "60%", left: "40%" },
-                { top: "70%", left: "70%" },
-              ];
-              const position = positions[index % positions.length];
-
-              return (
-                <button
-                  key={report.report_id}
-                  onClick={() => setSelectedReport(report.report_id)}
-                  className="absolute transform -translate-x-1/2 -translate-y-full hover:scale-110 transition-all"
-                  style={{ top: position.top, left: position.left }}
-                >
-                  <div className="relative">
-                    {/* Marker Pin */}
-                    <div
-                      className={`w-10 h-10 rounded-full ${
-                        statusColors[report.status as keyof typeof statusColors]
-                      } shadow-lg flex items-center justify-center text-white text-xl border-4 border-white`}
-                    >
-                      {categoryEmoji[species?.category as keyof typeof categoryEmoji]}
-                    </div>
-                    {/* Pointer */}
-                    <div
-                      className={`w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[12px] ${
-                        statusColors[report.status as keyof typeof statusColors]
-                      } mx-auto`}
-                    />
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+        <div className="relative h-[60vh] overflow-hidden">
+          {/* Naver Map */}
+          <div ref={mapRef} className="w-full h-full" />
 
           {/* Legend */}
           <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg">
