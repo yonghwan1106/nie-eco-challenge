@@ -30,8 +30,8 @@
 
 - Node.js 18+
 - npm 또는 yarn
-- Claude API 키
-- Naver Map API 클라이언트 ID
+- Claude API 키 (AI 이미지 식별용, 현재는 시뮬레이션)
+- Naver Map API Key ID (v3) - 선택사항 (현재 지도는 시각화 UI로 구현됨)
 
 ### 설치 방법
 
@@ -56,8 +56,8 @@ npm install
 # Claude API
 CLAUDE_API_KEY=your_claude_api_key_here
 
-# Naver Map API
-NEXT_PUBLIC_NAVER_MAP_CLIENT_ID=your_naver_map_client_id_here
+# Naver Map API (v3에서는 ncpKeyId 사용)
+NEXT_PUBLIC_NAVER_MAP_KEY_ID=your_naver_map_key_id_here
 
 # App Configuration
 NEXT_PUBLIC_APP_NAME=NIE 에코-챌린지
