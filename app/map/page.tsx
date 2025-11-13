@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Script from "next/script";
 import { ArrowLeft, MapPin, Filter, X } from "lucide-react";
 import Link from "next/link";
 import reportsData from "@/data/reports.json";
@@ -21,6 +22,7 @@ export default function MapPage() {
   const mapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
   const [markers, setMarkers] = useState<any[]>([]);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
   const [selectedReport, setSelectedReport] = useState<string | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
@@ -81,9 +83,9 @@ export default function MapPage() {
     rejected: "#ef4444",
   };
 
-  // 지도 초기화
+  // 지도 초기화 - isMapLoaded가 true일 때만 실행
   useEffect(() => {
-    if (!mapRef.current || !window.naver) return;
+    if (!isMapLoaded || !mapRef.current || !window.naver || map) return;
 
     const mapOptions = {
       center: new window.naver.maps.LatLng(36.5040, 127.2621),
@@ -96,7 +98,7 @@ export default function MapPage() {
 
     const newMap = new window.naver.maps.Map(mapRef.current, mapOptions);
     setMap(newMap);
-  }, []);
+  }, [isMapLoaded, map]);
 
   // 마커 업데이트
   useEffect(() => {
@@ -174,9 +176,15 @@ export default function MapPage() {
   }, [map, filteredReports]);
 
   return (
-    <div className="min-h-screen pb-24">
-      {/* Header */}
-      <div className="bg-white border-b sticky top-16 z-30">
+    <>
+      <Script
+        src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_KEY_ID}`}
+        onReady={() => setIsMapLoaded(true)}
+        strategy="afterInteractive"
+      />
+      <div className="min-h-screen pb-24">
+        {/* Header */}
+        <div className="bg-white border-b sticky top-16 z-30">
         <div className="flex items-center justify-between px-4 py-4 max-w-lg mx-auto">
           <div className="flex items-center gap-3">
             <Link href="/" className="p-2 hover:bg-gray-100 rounded-lg">
@@ -490,6 +498,7 @@ export default function MapPage() {
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 }
