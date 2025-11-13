@@ -29,7 +29,7 @@ export default function ProfilePage() {
   const recentReports = userReports
     .sort(
       (a, b) =>
-        new Date(b.report_date).getTime() - new Date(a.report_date).getTime()
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
     )
     .slice(0, 3);
 
@@ -268,17 +268,17 @@ export default function ProfilePage() {
                         {species?.name_ko || "알 수 없음"}
                       </p>
                       <p className="text-xs text-gray-500">
-                        {new Date(report.report_date).toLocaleDateString(
+                        {new Date(report.created_at).toLocaleDateString(
                           "ko-KR"
                         )}
                       </p>
                     </div>
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-semibold border ${
-                        statusColors[report.status]
+                        statusColors[report.status as keyof typeof statusColors]
                       }`}
                     >
-                      {statusLabels[report.status]}
+                      {statusLabels[report.status as keyof typeof statusLabels]}
                     </span>
                   </div>
                 );

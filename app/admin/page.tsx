@@ -266,17 +266,17 @@ export default function AdminPage() {
                           </p>
                         </td>
                         <td className="px-4 py-4 text-sm text-gray-600">
-                          {new Date(report.report_date).toLocaleDateString(
+                          {new Date(report.created_at).toLocaleDateString(
                             "ko-KR"
                           )}
                         </td>
                         <td className="px-4 py-4">
                           <span
                             className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                              statusColors[report.status]
+                              statusColors[report.status as keyof typeof statusColors]
                             }`}
                           >
-                            {statusLabels[report.status]}
+                            {statusLabels[report.status as keyof typeof statusLabels]}
                           </span>
                         </td>
                         <td className="px-4 py-4">
@@ -367,7 +367,7 @@ export default function AdminPage() {
                     <p className="font-semibold text-gray-700">신고 일시</p>
                   </div>
                   <p className="font-bold text-gray-900">
-                    {new Date(selectedReportData.report_date).toLocaleString(
+                    {new Date(selectedReportData.created_at).toLocaleString(
                       "ko-KR"
                     )}
                   </p>

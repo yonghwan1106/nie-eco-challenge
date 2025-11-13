@@ -190,12 +190,13 @@ export default function MissionsPage() {
                   <MissionCard
                     title={mission.title}
                     description={mission.description}
-                    rewardPoints={mission.reward_points}
+                    reward={mission.reward_points}
+                    goal={1}
                     difficulty={
                       mission.difficulty as "easy" | "medium" | "hard"
                     }
                     progress={progress}
-                    deadline={mission.end_date}
+                    endDate={mission.end_date}
                   />
                 </div>
               );

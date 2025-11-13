@@ -221,7 +221,7 @@ export default function MapPage() {
                     {/* Marker Pin */}
                     <div
                       className={`w-10 h-10 rounded-full ${
-                        statusColors[report.status]
+                        statusColors[report.status as keyof typeof statusColors]
                       } shadow-lg flex items-center justify-center text-white text-xl border-4 border-white`}
                     >
                       {categoryEmoji[species?.category as keyof typeof categoryEmoji]}
@@ -229,7 +229,7 @@ export default function MapPage() {
                     {/* Pointer */}
                     <div
                       className={`w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[12px] ${
-                        statusColors[report.status]
+                        statusColors[report.status as keyof typeof statusColors]
                       } mx-auto`}
                     />
                   </div>
@@ -293,7 +293,7 @@ export default function MapPage() {
                   <div className="flex items-start gap-3">
                     <div
                       className={`w-12 h-12 rounded-full ${
-                        statusColors[report.status]
+                        statusColors[report.status as keyof typeof statusColors]
                       } flex items-center justify-center text-white text-xl flex-shrink-0`}
                     >
                       {categoryEmoji[species?.category as keyof typeof categoryEmoji]}
@@ -305,10 +305,10 @@ export default function MapPage() {
                         </h3>
                         <span
                           className={`px-2 py-0.5 rounded-full text-xs font-semibold text-white ${
-                            statusColors[report.status]
+                            statusColors[report.status as keyof typeof statusColors]
                           }`}
                         >
-                          {statusLabels[report.status]}
+                          {statusLabels[report.status as keyof typeof statusLabels]}
                         </span>
                       </div>
                       <p className="text-sm text-gray-600 truncate">
@@ -318,7 +318,7 @@ export default function MapPage() {
                         <span>{user?.nickname}</span>
                         <span>•</span>
                         <span>
-                          {new Date(report.report_date).toLocaleDateString(
+                          {new Date(report.created_at).toLocaleDateString(
                             "ko-KR"
                           )}
                         </span>
@@ -364,10 +364,10 @@ export default function MapPage() {
             <div className="flex items-center gap-2">
               <span
                 className={`px-4 py-2 rounded-full text-sm font-semibold text-white ${
-                  statusColors[selectedReportData.status]
+                  statusColors[selectedReportData.status as keyof typeof statusColors]
                 }`}
               >
-                {statusLabels[selectedReportData.status]}
+                {statusLabels[selectedReportData.status as keyof typeof statusLabels]}
               </span>
               <span className="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm font-medium rounded-full">
                 {selectedSpecies.category}
@@ -381,7 +381,7 @@ export default function MapPage() {
                 {selectedUser.nickname}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                {new Date(selectedReportData.report_date).toLocaleString(
+                {new Date(selectedReportData.created_at).toLocaleString(
                   "ko-KR"
                 )}
               </p>

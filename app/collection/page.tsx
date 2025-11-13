@@ -221,10 +221,10 @@ export default function CollectionPage() {
               </span>
               <span
                 className={`px-3 py-1 text-white text-sm font-semibold rounded-full ${
-                  threatLevelColors[selectedSpeciesData.threat_level]
+                  threatLevelColors[selectedSpeciesData.threat_level as keyof typeof threatLevelColors]
                 }`}
               >
-                위협도: {threatLevelLabels[selectedSpeciesData.threat_level]}
+                위협도: {threatLevelLabels[selectedSpeciesData.threat_level as keyof typeof threatLevelLabels]}
               </span>
             </div>
 
